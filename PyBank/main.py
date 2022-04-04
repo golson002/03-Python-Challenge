@@ -1,8 +1,9 @@
-# Import the csv module
+# Import the os.path and csv modules
+import os.path
 import csv
 
 # Define the path to the .csv file we want to read so the program knows where to look.
-csvpath = 'PyBank/Resources/budget_data.csv'
+csvpath = os.path.join('Resources','budget_data.csv')
 
 # Define variables- either lists to add to to keep track of the data from each row we loop through or numbers to add to with the value from the rows we loop through.
 # This Total_Months list will keep track of all the months in the data set so we can then use the len function to count the total months in our data set.
@@ -11,7 +12,7 @@ Total_Months = []
 Total_Months_Value = 0
 # This Monthly Change variable will keep track of the profit change between rows (months).
 Monthly_Change = 0
-# We have to set a Current Value variable so the monthly change variable is subtracting the profit in the row right above the current one, rather than from the first row for every loop. 
+# We have to set a Current Value variable so the monthly change variable is subtracting the profit in the row directly above the current one, rather than from the first row of the data set for every loop. 
 Current_Value = 0
 # This Monthly_Profit list will keep track of the monthly profit changes for all the months in our data set. 
 Monthly_Profit = []
@@ -22,10 +23,10 @@ Net_Profit_Loss = 0
 with open(csvpath, 'r') as csvfile:
     # Specify the variable that holds the file's contents and the delimiter type to the csv.reader function. 
     csvreader =csv.reader(csvfile, delimiter=',')
-    # Skip the header row
+    # Store the header row.
     csvheader = next(csvreader)
     
-    # Accurately set the first row so the program knows where to start calculating profit change
+    # Accurately set the first row so the program knows where to start calculating profit change. (Not going to be a change for the first month.)
     row_one = next(csvreader)
     Total_Months_Value += 1
     Net_Profit_Loss += int(row_one[1])
@@ -76,7 +77,7 @@ output_header = 'Financial Analysis:'
 print(output_header)
 print('-'*len(output_header))
 
-# Print the total Total Months included in the data set, the Net Profit/Loss, the Average Monthly Change, and the Greatest Increase/Decrease months/values using f-strings. 
+# Print the Total Months included in the data set, the Net Profit/Loss, the Average Monthly Change, and the Greatest Increase/Decrease months/values using f-strings to the terminal. 
 print(f'Total Months: {Month_Count}')
 print(f'Net Profit/Loss: ${Net_Profit_Loss}')
 print(f'Average Change: ${round(Average_Monthly_ProfitChange,2)}')
@@ -84,7 +85,7 @@ print(f'Greatest Increase in Profits: {Greatest_ProfitIncreaseDate} (${Greatest_
 print(f'Greatest Decrease in Profits: {Greatest_ProfitDecreaseDate} (${Greatest_ProfitDecrease})')
 
 # Open the txt file referenced in the output variable with writing functionality.
-output = open('PyBank/Analysis/Analysis.txt','w')
+output = open(os.path.join('Analysis','Analysis.txt'),'w')
 
 # Define a variable 'lines' that holds a list of the data we want to add to this .txt file. 
 lines = [str(output_header), 

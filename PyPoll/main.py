@@ -1,8 +1,9 @@
-# Import the csv module
+# Import the os.path and csv modules
+import os.path
 import csv
 
 # Define the path to the .csv file we want to read so the program knows where to look.
-csvpath = 'PyPoll/Resources/election_data.csv'
+csvpath = os.path.join('Resources','election_data.csv')
 
 # Set a variable to sum the total number of votes in our data set as we loop through each row. 
 Total_Votes = 0
@@ -13,7 +14,7 @@ Unique_Candidates = {}
 with open(csvpath) as csvfile:
     # Specify the variable that holds the file's contents and the delimiter type to the csv.reader function.
     csvreader =csv.reader(csvfile, delimiter=',')
-    # Skip the header row
+    # Store the header row.
     csvheader = next(csvreader)
 
     # Loop through each row after the header and...
@@ -22,7 +23,7 @@ with open(csvpath) as csvfile:
         # Add one to our total votes counter (one row of data equals one vote).
         Total_Votes += 1
 
-        # Set a variable 'candidate' equal to the value in the third column of the data set (the candidate)
+        # Set a variable 'candidate' equal to the value in the third column of the data set (the candidate).
         candidate = row[2]
         # While looping through the rows, if the candidate's name is not in our dictionary, add their name to the dictionary and add one to the value associated with their key in the dictionary. 
         if candidate not in Unique_Candidates:
@@ -30,7 +31,7 @@ with open(csvpath) as csvfile:
         # If their name is in the dictionary, then add one to the value associated with their name (key) in the dictionary. 
         Unique_Candidates[candidate] += 1
 
-    # Create a list of the values in the Unique_Candidates dictionary. 
+    # Create a list of the values (number of votes) in the Unique_Candidates dictionary. 
     list1 = list(Unique_Candidates.values())
     # Create a list of the keys (names) in the Unique_Candidates dictionary. 
     list2 = list(Unique_Candidates.keys())
@@ -56,7 +57,7 @@ output_header = 'Election Results:'
 print(output_header)
 print('-'*len(output_header))
 
-# Print the Total Votes cast, a list of each candidate in our data set with the percentage of votes they received as well as the raw total of votes they received, and the winner of the election using f-strings and a for loop.
+# Print the Total Votes cast, a list of each candidate in our data set with the percentage of votes they received as well as the raw total of votes they received, and the winner of the election using f-strings and a for loop to the terminal.
 print(f'Total Votes: {Total_Votes}')
 print('-'*len(output_header))
 for candidate in range(len(list2)):
@@ -65,11 +66,8 @@ print('-'*len(output_header))
 print(f'Winner: {Winning_name}')
 print('-'*len(output_header))
 
-# Define the path to the .txt file we want to write the output of our analysis to (Results.txt).
-# outputpath = 'Analysis/Results.txt'
-
-# Open the txt file referenced in the outputpath variable, with writing functionality, and save its contents in the outputfile variable.
-output = open('PyPoll/Analysis/Results.txt','w')
+# Open the txt file referenced in the output variable with writing functionality.
+output = open(os.path.join('Analysis','Results.txt'),'w')
 
 # Define a variable 'lines1' that holds a list of the first section of data we want to add to this .txt file. 
 lines1 = [str(output_header),
