@@ -29,9 +29,9 @@ In the PyPoll exercise, my program reads through the 300,000+ rows in the electi
 
 * Python is a great tool for analyzing large data sets and I now understand why so many company's today use it to inform their decision making. In these exercises, I experienced the efficiency of the language and the addtional avenues/paths it offers for analyzing large data sets that, in some cases, make it a superior tool over Excel.
 
-* Learning the syntax is a work in progress and takes time, as learning any new langauge does, but I found once I understood the foundational elements, I was able to build off of them to ultimately tell a story with the data (the essence of data analysis/science).
+* Learning the language/code is a work in progress and takes time, as learning any new langauge does, but I found once I understood the foundational elements, I was able to build off of them to ultimately tell a story with the data (the essence of data analysis/science).
 
-* Commenting out colloquial langauge or writing sentences on a notepad to make sense of what we want our program to do sometimes helps to inform how our syntax should read. This is a practice I will take into other modules of the course as we write programs in different langauges.
+* Commenting out colloquial langauge, writing sentences on a notepad to make sense of what we want our program to do, adding syntax, etc. sometimes helps to inform how our code should read. This is a practice I will take into other modules of the course as we write programs in different langauges.
 
 ## **Further Analysis/Work:**
 
